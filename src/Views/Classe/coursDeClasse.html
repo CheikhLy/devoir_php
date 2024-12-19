@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours de la Classe - {{ classe.nom }}</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Cours de la Classe: {{ classe.nom }}</h1>
+        
+        {% if cours is not empty %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nom du Cours</th>
+                        <th>Module</th>
+                        <th>Professeur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for coursItem in cours %}
+                        <tr>
+                            <td>{{ coursItem.id }}</td>
+                            <td>{{ coursItem.nom }}</td>
+                            <td>{{ coursItem.module }}</td>
+                            <td>{{ coursItem.professeur.nom }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Aucun cours trouvé pour cette classe.</p>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>

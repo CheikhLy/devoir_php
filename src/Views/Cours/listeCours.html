@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Cours</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Liste des Cours</h1>
+        
+        <a href="{{ path('app_cours_create') }}" class="btn btn-primary mb-3">Ajouter un Cours</a>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom du Cours</th>
+                    <th>Module</th>
+                    <th>Professeur</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cours in cours %}
+                    <tr>
+                        <td>{{ cours.id }}</td>
+                        <td>{{ cours.nom }}</td>
+                        <td>{{ cours.module }}</td>
+                        <td>{{ cours.professeur.nom }}</td>
+                        <td>
+                            <a href="{{ path('app_cours_edit', {'id': cours.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                            <a href="{{ path('app_cours_delete', {'id': cours.id}) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Aucun cours trouvé.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>

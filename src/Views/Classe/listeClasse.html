@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Classes</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Liste des Classes</h1>
+        
+        <a href="{{ path('app_classe_create') }}" class="btn btn-primary mb-3">Ajouter une Classe</a>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom de la Classe</th>
+                    <th>Niveau</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for classe in classes %}
+                    <tr>
+                        <td>{{ classe.id }}</td>
+                        <td>{{ classe.nom }}</td>
+                        <td>{{ classe.niveaux.nom }}</td>
+                        <td>
+                            <a href="{{ path('app_classe_edit', {'id': classe.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                            <a href="{{ path('app_classe_delete', {'id': classe.id}) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Aucune classe trouvée.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>

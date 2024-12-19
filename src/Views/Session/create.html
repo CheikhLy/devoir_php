@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un Cours</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+<h1>Créer une nouvelle session</h1>
+
+<h1>Créer une nouvelle session</h1>
+
+<form action="{{ path('app_session_create') }}" method="POST">
+    <div>
+        <label for="nom">Nom de la session</label>
+        <input type="text" name="nom" id="nom" required />
+    </div>
+
+    <div>
+        <label for="classe">Classe</label>
+        <select name="classe" id="classe" required>
+            {% for classe in classes %}
+                <option value="{{ classe.id }}">{{ classe.nom }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div>
+        <label for="date_debut">Date de début</label>
+        <input type="datetime-local" name="date_debut" id="date_debut" required />
+    </div>
+
+    <div>
+        <label for="date_fin">Date de fin</label>
+        <input type="datetime-local" name="date_fin" id="date_fin" required />
+    </div>
+
+    <div>
+        <button type="submit">Créer la session</button>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un Cours</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Créer un Cours</h1>
+        
+        <form action="{{ path('app_cours_create') }}" method="POST">
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom du Cours</label>
+                <input type="text" class="form-control" id="nom" name="nom" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="module" class="form-label">Module</label>
+                <input type="text" class="form-control" id="module" name="module" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="professeur" class="form-label">Professeur</label>
+                <select class="form-select" id="professeur" name="professeur" required>
+                    <option value="">Choisir un professeur</option>
+                    {% for professeur in professeurs %}
+                        <option value="{{ professeur.id }}">{{ professeur.nom }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Créer le Cours</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>
